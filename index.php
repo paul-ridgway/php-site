@@ -1,13 +1,20 @@
 <a href="/">PHP Info</a>
 |
 <a href="/?cpu=1">CPU</a>
+<br />
 <?php
         if ($_REQUEST['cpu'] == 1) {
-                echo "Run CPU";
-                for($i = 0; $i < 1000000000; ++$i) {
+				$time = microtime();
+				$time = explode(' ', $time);
+				$time = $time[1] + $time[0];
+                echo "Run CPU...<br />";
+                for($i = 0; $i < 100000000; ++$i) {
 
                 }
                 echo "CPU Ran";
+				$finish = $time;
+				$total_time = round(($finish - $start), 4);
+				echo ' in '.$total_time.' seconds.'."\n";
 
         } else {
                 phpinfo();
