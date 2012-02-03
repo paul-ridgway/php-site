@@ -5,6 +5,8 @@
 |
 <a href="/?smem=1">Small Mem</a>
 |
+<a href="/?mmem=1">Medium Mem</a>
+|
 <a href="/?lmem=1">Large Mem</a>
 <br />
 <?php
@@ -16,6 +18,20 @@
                 echo "Run SMem...<br />";
                 str_repeat("a", 10000000);
                 echo "SMem Ran";
+                $time = microtime();
+                $time = explode(' ', $time);
+                $time = $time[1] + $time[0];
+                $finish = $time;
+                $total_time = round(($finish - $start), 4);
+                echo ' in '. $total_time.' seconds.'."\n";
+        } elseif ($_REQUEST['mmem'] == 1) {
+                $time = microtime();
+                $time = explode(' ', $time);
+                $time = $time[1] + $time[0];
+                $start = $time;
+                echo "Run MMem...<br />";
+                str_repeat("a", 50000000);
+                echo "MMem Ran";
                 $time = microtime();
                 $time = explode(' ', $time);
                 $time = $time[1] + $time[0];
