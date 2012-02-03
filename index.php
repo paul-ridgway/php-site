@@ -3,17 +3,33 @@
 |
 <a href="/?cpu=1">CPU</a>
 |
-<a href="/?mem=1">Mem</a>
+<a href="/?smem=1">Small Mem</a>
+|
+<a href="/?lmem=1">Large Mem</a>
 <br />
 <?php
-        if ($_REQUEST['mem'] == 1) {
+        if ($_REQUEST['smem'] == 1) {
                 $time = microtime();
                 $time = explode(' ', $time);
                 $time = $time[1] + $time[0];
                 $start = $time;
-                echo "Run Mem...<br />";
+                echo "Run SMem...<br />";
+                str_repeat("a", 10000000);
+                echo "SMem Ran";
+                $time = microtime();
+                $time = explode(' ', $time);
+                $time = $time[1] + $time[0];
+                $finish = $time;
+                $total_time = round(($finish - $start), 4);
+                echo ' in '. $total_time.' seconds.'."\n";
+        } elseif ($_REQUEST['lmem'] == 1) {
+                $time = microtime();
+                $time = explode(' ', $time);
+                $time = $time[1] + $time[0];
+                $start = $time;
+                echo "Run LMem...<br />";
                 str_repeat("a", 100000000);
-                echo "Mem Ran";
+                echo "LMem Ran";
                 $time = microtime();
                 $time = explode(' ', $time);
                 $time = $time[1] + $time[0];
